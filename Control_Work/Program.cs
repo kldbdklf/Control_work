@@ -32,3 +32,4 @@ string[] array = GetArray();
 Show(array);
 string[] arrayLess4 =  GetStringsLess4Symbols(array);
 Show(arrayLess4);
+Console.WriteLine(arrayLess4.Length);
