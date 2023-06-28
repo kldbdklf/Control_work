@@ -1,9 +1,34 @@
-﻿string[] array = new string[5];
-array[0] = "Sad";
-Console.WriteLine(array.Length);
-if (array[0].Length <= 3)
+﻿Console.WriteLine("Control work: ");
+string[] GetArray ()
 {
-    Console.WriteLine(array[0]);
+    Console.Write("Enter a size of array: ");
+    int size = int.Parse(Console.ReadLine()!);
+    string[] result = new string[size];
+    for (int i = 0; i < size; i++)
+    {
+        Console.Write($"Enter string {i}: ");
+        result[i] = Console.ReadLine()!;
+    }
+    return result;
 }
-Array.Resize(ref array, array.Length+1);
-Console.WriteLine(array.Length);
+string[] GetStringsLess4Symbols(string[] inputArray)
+{
+    string[] result = new string[0];
+    for (int i = 0;i < inputArray.Length;i++)
+    {
+        if (inputArray[i].Length < 4)
+        {
+            Array.Resize(ref result, result.Length + 1);
+            result[result.Length - 1] = inputArray[i];
+        }
+    }
+    return result;
+}
+void Show (string[] array)
+{
+    Console.WriteLine($"Array: \n {String.Join(" | ", array)}");
+}
+string[] array = GetArray();
+Show(array);
+string[] arrayLess4 =  GetStringsLess4Symbols(array);
+Show(arrayLess4);
